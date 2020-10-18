@@ -26,23 +26,23 @@
 						<tbody>
 							<tr>
 								<th class="px-3 py-3 text-center border">ID</th>
-								<td class="px-3 py-3 border">{{ $place->id }}</td>
+								<td class="px-3 py-3 border">{{ optional($place)->id }}</td>
 							</tr>
 							<tr>
 							<th class="px-3 py-3 text-center border">名前</th>
-								<td class="px-3 py-3 border">{{ $place->name }}</td>
+								<td class="px-3 py-3 border">{{ optional($place)->name }}</td>
 							</tr>
 							<tr>
 							<th class="px-3 py-3 text-center border">作成日</th>
-								<td class="px-3 py-3 border">{{ $place->created_at->format("Y-m-d H:i:s") }}</td>
+								<td class="px-3 py-3 border">{{ optional($place)->created_at->format("Y-m-d H:i:s") }}</td>
 							</tr>
 							<tr>
 								<th class="px-3 py-3 text-center border">更新日</th>
-								<td class="px-3 py-3 border">{{ $place->updated_at->format("Y-m-d H:i:s") }}</td>
+								<td class="px-3 py-3 border">{{ optional($place)->updated_at->format("Y-m-d H:i:s") }}</td>
               </tr>
               <tr>
 								<th class="px-3 py-3 text-center border">説明</th>
-								<td class="px-3 py-3 border">{{ $place->description }}</td>
+								<td class="px-3 py-3 border">{{ optional($place)->description }}</td>
               </tr>
 						</tbody>
 					</table>

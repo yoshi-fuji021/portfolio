@@ -1,4 +1,4 @@
-<form class="w-full" action="#" method="post">
+<form class="w-full" action="{{ route('place.search') }}" method="post">
 	@csrf
 	<div class="flex flex-wrap">
 		<div class="w-2/3">

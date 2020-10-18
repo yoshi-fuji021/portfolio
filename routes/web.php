@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SearchPlaceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::resource('place', PlaceController::class)->only(['index', 'create','store','show']);
+
+Route::post('place/search', SearchPlaceController::class)->name('place.search');
