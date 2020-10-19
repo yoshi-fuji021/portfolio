@@ -120,6 +120,8 @@ class PlaceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $places = Place::find($id);
+        $places->delete();
+        return redirect()->route('place.index');
     }
 }

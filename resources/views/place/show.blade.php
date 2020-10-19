@@ -54,7 +54,15 @@
 							</tr>
 						</tbody>
 					</table>
+
 					<a href="{{ route('place.edit', ['place' => $place->id]) }}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded">編集</a>
+
+					<form style="display:inline" action="{{ route('place.destroy', $place->id) }}" method="post">
+          	@csrf
+            @method('DELETE')
+            <button type="submit" class="bg-blue-500 text-white font-bold px-4 py-2 rounded">{{ __('削除') }}</button>
+					</form>
+														
 					<a href="{{ route('place.index') }}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded">戻る</a>
 				</div>
 				<!-- /ページ固有要素 ここまで -->
