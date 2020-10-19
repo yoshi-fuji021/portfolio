@@ -75,7 +75,8 @@ class PlaceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $place = Place::find($id);
+        return view('place.edit', compact('place'));
     }
 
     /**
@@ -87,7 +88,28 @@ class PlaceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $place = Place::find($id);
+        
+        if($request->action === 'back') //戻るボタンを押した場合
+        {
+            return redirect()->route('place.index');
+        } 
+
+        elseif( $request->action === 'edit' && $place->user_id != Auth::id() ) //投稿者以外が編集しようとしたときの処理 
+        {
+            return back()->with('error',"このレビューは編集できません");
+        }
+         
+        else // 更新
+        {
+            $place->name = $request->name;
+            $place->address = $request->address;
+            $place->description = $request->description;
+            $place->save();
+
+            return redirect()->action([PlaceController::class, 'index'])->with('message','更新しました');
+        }
+        
     }
 
     /**

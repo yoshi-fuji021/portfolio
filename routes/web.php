@@ -23,6 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('place', PlaceController::class)->only(['index', 'create','store','show']);
+Route::resource('place', PlaceController::class)->only(['index', 'create','store','show','edit','update']);
 
 Route::post('place/search', SearchPlaceController::class)->name('place.search');

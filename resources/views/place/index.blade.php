@@ -25,7 +25,7 @@
 								<th class="px-3 py-3 text-center border">名前</th>
 								<th class="px-3 py-3 text-center border">作成日</th>
 								<th class="px-3 py-3 text-center border">更新日</th>
-								<th class="px-3 py-3 text-center border">コメント</th>
+								<th class="px-3 py-3 text-center border"></th>
 							</tr>
 						</thead>
 

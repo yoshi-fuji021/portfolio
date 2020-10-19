@@ -29,11 +29,19 @@
 								<td class="px-3 py-3 border">{{ optional($place)->id }}</td>
 							</tr>
 							<tr>
-							<th class="px-3 py-3 text-center border">名前</th>
+								<th class="px-3 py-3 text-center border">名前</th>
 								<td class="px-3 py-3 border">{{ optional($place)->name }}</td>
 							</tr>
 							<tr>
-							<th class="px-3 py-3 text-center border">作成日</th>
+								<th class="px-3 py-3 text-center border">住所</th>
+								<td class="px-3 py-3 border">{{ optional($place)->address }}</td>
+							</tr>
+							<tr>
+								<th class="px-3 py-3 text-center border">カテゴリー</th>
+								<td class="px-3 py-3 border">{{ optional($place)->category }}</td>
+							</tr>
+							<tr>
+								<th class="px-3 py-3 text-center border">作成日</th>
 								<td class="px-3 py-3 border">{{ optional($place)->created_at->format("Y-m-d H:i:s") }}</td>
 							</tr>
 							<tr>
@@ -43,9 +51,11 @@
               <tr>
 								<th class="px-3 py-3 text-center border">説明</th>
 								<td class="px-3 py-3 border">{{ optional($place)->description }}</td>
-              </tr>
+							</tr>
 						</tbody>
 					</table>
+					<a href="{{ route('place.edit', ['place' => $place->id]) }}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded">編集</a>
+					<a href="{{ route('place.index') }}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded">戻る</a>
 				</div>
 				<!-- /ページ固有要素 ここまで -->
 			</div>
