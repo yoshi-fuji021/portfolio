@@ -38,7 +38,15 @@
 							</tr>
 							<tr>
 								<th class="px-3 py-3 text-center border">カテゴリー</th>
-								<td class="px-3 py-3 border">{{ optional($place)->category }}</td>
+								<td class="px-3 py-3 border">
+									@if (optional($place)->category === 0)
+										図書館
+									@elseif (optional($place)->category === 1)
+										カフェ
+									@else (optional($place)->category === 2)
+										その他
+									@endif
+								</td>
 							</tr>
 							<tr>
 								<th class="px-3 py-3 text-center border">作成日</th>

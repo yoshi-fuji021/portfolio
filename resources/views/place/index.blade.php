@@ -9,6 +9,8 @@
 			<div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 				<!-- ページ固有要素 -->
 				<div class="mt-5 px-4 py-5">
+					
+					<a href="{{ route('place.create') }}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded float-right mr-5">作成</a>
 
 					@include("place.place_search_form")
 
@@ -23,6 +25,7 @@
 							<tr class="py-3">
 								<th class="px-3 py-3 text-center border">ID</th>
 								<th class="px-3 py-3 text-center border">名前</th>
+								<th class="px-3 py-3 text-center border">カテゴリー</th>
 								<th class="px-3 py-3 text-center border">作成日</th>
 								<th class="px-3 py-3 text-center border">更新日</th>
 								<th class="px-3 py-3 text-center border"></th>
@@ -34,6 +37,15 @@
 								<tr>
 									<td class="px-3 py-3 text-center border">{{ $place->id }}</td>
 									<td class="px-3 py-3 text-center border">{{ $place->name }}</td>
+									<td class="px-3 py-3 text-center border">
+										@if ($place->category === 0) 
+											図書館
+										@elseif ($place->category === 1)
+											カフェ
+										@else ($place->category === 2)
+											その他
+										@endif
+									</td>
 									<td class="px-3 py-3 text-center border">{{ $place->created_at->format("Y-m-d H:i:s") }}</td>
 									<td class="px-3 py-3 text-center border">{{ $place->updated_at->format("Y-m-d H:i:s") }}</td>
 									<td class="px-3 py-3 text-center border">
