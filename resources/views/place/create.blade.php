@@ -49,7 +49,8 @@
 							@enderror
 						</div>
 						<div class="mb-4 flex items-center">
-							<input type="submit" value="作成" class="bg-blue-500 text-white font-bold py-2 px-4 rounded" />
+							<button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mx-4" name="action" value="create">{{ __('作成')}}</button>
+              <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mx-4" name="action" value="back">{{ __('戻る')}}</button>
 						</div>
 					</form>
 				</div>

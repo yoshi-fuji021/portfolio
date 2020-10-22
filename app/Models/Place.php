@@ -11,7 +11,7 @@ class Place extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name','address','category','address','description','user_id'];
+    protected $fillable = ['name','address','category','description','user_id'];
 
     public function user() {
         return $this->belongsTo('App\Models\User');

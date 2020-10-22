@@ -26,7 +26,8 @@ class StorePlacePost extends FormRequest
         return [
             'name' => 'required',
             'address' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            'description' => 'nullable'
         ];
     }
 
@@ -40,7 +41,8 @@ class StorePlacePost extends FormRequest
         return [
             'name.required' => '名前を入力してください。',
             'address.required' => '住所を入力してください。',
-            'category.required' => '選択してください'
+            'category.required' => '選択してください。',
+            'description.nullable' => '入力してください。'
         ];
     }
 }

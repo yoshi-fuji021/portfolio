@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SearchPlaceController;
+use App\Models\Place;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+// CRUD機能
 Route::resource('place', PlaceController::class);
-
+// 検索機能
 Route::post('place/search', SearchPlaceController::class)->name('place.search');

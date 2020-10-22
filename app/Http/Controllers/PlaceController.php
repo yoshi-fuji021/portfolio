@@ -40,19 +40,37 @@ class PlaceController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param \
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePlacePost $request)
+    public function store(Request $request)
     {
-        // バリデーション済みのデータを取得
-        $validated = $request->validated();
-        // 作成するユーザーIDを設定
-        $validated['user_id'] = Auth::id();
-        // レビューの保存
-        $new = Place::create($validated);
-        // 登録後はダッシュダッシュボードに遷移
-        return redirect()->route('place.index')->with('message',$new->name.'のレビューを作成しました');
+        if ($request->action === 'back') //戻るボタンを押したときの処理
+        { 
+            return redirect()->route('place.index');
+        }
+        else 
+        {
+            // バリデーションの設定
+            $validated = $request->validate([
+                'name' => 'required',
+                'address' => 'required',
+                'category' => 'required',
+                'description' => 'nullable'
+            ],
+            [
+                'name.required' => '名前を入力してください。',
+                'address.required' => '住所を入力してください。',
+                'category.required' => '選択してください。',
+                'description.nullable' => '入力してください。'
+            ]);
+            // 作成するユーザーIDを設定
+            $validated['user_id'] = Auth::id();
+            // レビューの保存
+            $new = Place::create($validated);
+            // 登録後はダッシュダッシュボードに遷移
+            return redirect()->route('place.index')->with('message',$new->name.'のレビューを作成しました');
+        }
     }
 
     /**
@@ -94,17 +112,30 @@ class PlaceController extends Controller
         {
             return redirect()->route('place.index');
         } 
-
         elseif( $request->action === 'edit' && $place->user_id != Auth::id() ) //投稿者以外が編集しようとしたときの処理 
         {
             return back()->with('error',"このレビューは編集できません");
         }
-         
-        else // 更新
+        else // 更新処理
         {
-            $place->name = $request->name;
-            $place->address = $request->address;
-            $place->description = $request->description;
+            // バリデーションの設定
+            $validated = $request->validate([
+                'name' => 'required',
+                'address' => 'required',
+                'category' => 'required',
+                'description' => 'nullable'
+            ],
+            [
+                'name.required' => '名前を入力してください。',
+                'address.required' => '住所を入力してください。',
+                'category.required' => '選択してください。',
+                'description.nullable' => '入力してください。'
+            ]);
+            // 値の更新
+            $place->name = $validated['name'];
+            $place->address = $validated['address'];
+            $place->category = $validated['category'];
+            $place->description = $validated['description'];
             $place->save();
 
             return redirect()->action([PlaceController::class, 'index'])->with('message','更新しました');
