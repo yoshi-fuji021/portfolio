@@ -29,6 +29,7 @@
 								<th class="px-3 py-3 text-center border">作成日</th>
 								<th class="px-3 py-3 text-center border">更新日</th>
 								<th class="px-3 py-3 text-center border"></th>
+								<th class="px-3 py-3 text-center border"></th>
 							</tr>
 						</thead>
 
@@ -50,6 +51,13 @@
 									<td class="px-3 py-3 text-center border">{{ $place->updated_at->format("Y-m-d H:i:s") }}</td>
 									<td class="px-3 py-3 text-center border">
 										<a href="{{ route('place.show', ['place' => $place->id])}}" class="bg-blue-500 text-white font-bold px-4 py-3 rounded">詳細</a>
+									</td>
+									<td class="text-center">
+										@if($place->is_liked_by_auth_user())
+											<a href="{{ route('place.unlike', ['id' => $place->id]) }}" class="btn  bg-red-300 px-4 py-3 rounded">いいね<span class="badge">{{ $place->likes->count() }}</span></a>
+										@else
+											<a href="{{ route('place.like', ['id' => $place->id]) }}" class="btn bg-gray-400 px-4 py-3 rounded">いいね<span class="badge">{{ $place->likes->count() }}</span></a>
+										@endif
 									</td>
 								</tr>
 							@endforeach
