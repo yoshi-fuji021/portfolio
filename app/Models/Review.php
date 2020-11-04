@@ -22,4 +22,5 @@ class Review extends Model
     public function like()
     {
         return $this->hasMany('App\Models\Like');
+    }
 }
