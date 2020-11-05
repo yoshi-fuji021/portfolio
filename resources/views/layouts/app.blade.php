@@ -20,19 +20,23 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-orange-200">
-            @livewire('navigation-dropdown')
-
             <!-- Page Heading -->
-            <header class="bg-orange-400 shadow">
-                <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
+            @livewire('navigation-dropdown')
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
+
+            <!-- Page Footer -->
+            <footer>
+                <div class="text-center bg-orange-400">
+                    <div class="py-6 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <h3>Copyright © 2020 WIsTOCK Inc. All Rights Reserved.</h3>
+                    </div>
+                </div>
+		    </footer>
+
         </div>
 
         @stack('modals')
