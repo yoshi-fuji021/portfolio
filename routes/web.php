@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\SearchPlaceController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\SearchLibraryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,5 @@ Route::post('place/search', SearchPlaceController::class)->name('place.search');
 // いいね機能
 Route::get('/place/like/{id}', [LikeController::class, 'like'])->name('place.like');
 Route::get('/place/unlike/{id}', [LikeController::class, 'unlike'])->name('place.unlike');
+
+Route::post('library/search', SearchLibraryController::class)->name('library.search');

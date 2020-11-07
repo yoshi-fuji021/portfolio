@@ -20,7 +20,7 @@ class PlaceController extends Controller
     public function index() 
     {
         // 登録されているレビューを全て取り出す。
-        $places = Place::paginate(10);
+        $places = Place::paginate(3);
         // View:place.indexを表示
         return view('place.index', compact('places'));
     }

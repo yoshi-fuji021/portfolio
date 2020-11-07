@@ -15,12 +15,14 @@ class SearchPlaceController extends Controller
     {
 			$keyword_name = $request->name;
 
-			if(!empty($keyword_name)) {
+			if(!empty($keyword_name)) 
+			{
 				$places = Place::where('name','like', '%' .$keyword_name. '%')->get();
 				$message = "「". $keyword_name."」を含む名前の検索が完了しました。";
 				return view('place.search',compact('places','message'));
 			}
-			else {
+			else 
+			{
 				$message = "検索結果はありません。";
 				return view('place.search',compact('message'));
 			}
