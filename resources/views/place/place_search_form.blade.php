@@ -1,4 +1,4 @@
-<form action="{{ route('library.search') }}" method="post">
+<form action="{{ route('library.search') }}" method="get">
 	@csrf
 	<div class="flex flex-wrap">
 		<select name="pref" id="pref" class="border-solid border-4 border-orange-400 text-center">
@@ -52,7 +52,7 @@
 		</select>
 		<input type="text" name="city" id="city" placeholder="市町村を入力してください" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
 		<div class="w-1/3 px-6">
-			<input class="shadow bg-gray-500 text-white font-bold py-2 px-4 rounded" type="submit" value="検索">
+			<input class="shadow bg-gray-500 text-white font-bold py-2 px-2 rounded" type="submit" value="検索">
 		</div>
 	</div>
 </form>

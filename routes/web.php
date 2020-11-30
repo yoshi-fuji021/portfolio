@@ -34,4 +34,5 @@ Route::post('place/search', SearchPlaceController::class)->name('place.search');
 Route::get('/place/like/{id}', [LikeController::class, 'like'])->name('place.like');
 Route::get('/place/unlike/{id}', [LikeController::class, 'unlike'])->name('place.unlike');
 
-Route::post('library/search', SearchLibraryController::class)->name('library.search');
+//検索機能 
+Route::get('library/search', SearchLibraryController::class)->name('library.search');
